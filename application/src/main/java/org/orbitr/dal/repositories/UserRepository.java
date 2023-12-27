@@ -7,7 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepository {
-    public User createUser(User user) {
+
+    private static UserRepository instance;
+    private UserRepository(){
+    }
+
+    public static UserRepository getInstance(){
+        if (instance == null) {
+            instance = new UserRepository();
+        }
+
+        return instance;
+    }
+
+    public void createUser(User user) {
         String sql = "INSERT INTO Users (FirstName, LastName, Username, Password, Email, ProfilePicture, Credits) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection connection = DatabaseConnection.getConnection();
@@ -31,7 +44,6 @@ public class UserRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Database access error occurred.", e);
         }
-        return user;
     }
 
     public User getUser(int id) {
@@ -57,7 +69,7 @@ public class UserRepository {
         } catch (SQLException e) {
             throw new RuntimeException("Error reading user from the database.", e);
         }
-        return null; // or throw an exception
+        return null;
     }
 
     public void updateUser(User user) {
