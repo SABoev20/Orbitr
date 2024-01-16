@@ -14,7 +14,7 @@
           <div class="transactions-wrapper">
             <img class="badge-image" src="../assets/images/rocket-badge.png" />
             <p class="transaction-label">Last transactions:</p>
-            <div class="transaction-div" v-for="(item, index) in transactionDataList" :key="index">{{ item.description }}</div>
+            <div class="transaction-div" v-for="(item, index) in transactionDataList" :key="index">{{ item.price }}   {{ item.transactionType }}  {{ item.transactionDate }}</div>
           </div>
           <div class="stats-wrapper-wrapper">
             <div class="stats-wrapper">
@@ -253,10 +253,16 @@ onMounted(() => {
 
 .transaction-div {
   background-color: #373d49;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   border-radius: 10px;
   margin-top: 6%;
   width: 90%;
   height: 15%;
+  font-family: Poppins-light;
+  font-size: 1.25rem;
 }
 
 .stats-wrapper-wrapper {
