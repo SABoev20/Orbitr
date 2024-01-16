@@ -42,7 +42,7 @@ public class User{
         this.username = username;
         this.password = password;
         this.email = email;
-        this.profilePicture = "https://source.boringavatars.com/beam/120/" + username + "?colors=4583D2,9E90F7,695CBB,EFF2FB";
+        this.profilePicture = "https://source.boringavatars.com/beam/120/?colors=4583D2,9E90F7,695CBB,EFF2FB";
         this.credits = 1340;
     }
 

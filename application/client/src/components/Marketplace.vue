@@ -10,7 +10,7 @@
       </div>
       <div class="main-content-wrapper">
         <div class="credits-wrapper">
-          <p class="credits-text">Credits: {{userData?.credits}}</p>
+          <p class="credits-text">Credits {{userData?.credits}}</p>
         </div>
         <div class="market-wrapper">
           <div class="offer-wrapper" v-for="(offer, index) in offersList" :key="index">
@@ -25,9 +25,9 @@
               <div @click="buyOffer(offer)" class="buy-button">
                 <p class="price-text">Price: {{ offer.price }}</p>
               </div>
-                <div style="display: flex;">
-                  <p class="seller-names">{{ offer.user.firstName }} {{ offer.user.firstName }}</p>
-                  <img class="offer-profile-picture" :src="userData?.profilePicture" />
+                <div class="seller-wrapper">
+                  <p class="seller-names">{{ offer.user.firstName }} {{ offer.user.lastName }}</p>
+                  <img class="offer-profile-picture" :src="offer.user.profilePicture" />
                 </div>
             </div>
           </div>
@@ -286,10 +286,12 @@ onMounted(() => {
 .ship-description{
   font-family: Poppins-extra-light;
   width: 30vw;
+  margin: 0;
+  margin-top: 1vh;
 }
 
 .secondary-wrapper{
-  margin-left: 8vw;
+  margin-left: 7.5vw;
 }
 
 .buy-button{
@@ -309,6 +311,11 @@ onMounted(() => {
   font-size: 1.75rem;
 }
 
+.seller-wrapper{
+  display: flex; 
+  justify-content: right;
+}
+
 .seller-names{
   font-family: Poppins-light;
   font-size: 1.25rem;
@@ -316,7 +323,10 @@ onMounted(() => {
 
 .offer-profile-picture{
   width: 2.8vw;
-  margin-left: 1vw;
+  height: 2.8vw;
+  margin-top: 0.6vh;
+  margin-left: 1vh;
+  border-radius: 100%;
 }
 
 </style>
