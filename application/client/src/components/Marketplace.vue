@@ -77,6 +77,8 @@ const token = sessionStorage.getItem('token')
 const userData = ref<UserData | null>(null)
 const offersList = ref<OfferData[]>([]);
 
+
+
 async function buyOffer(offer: OfferData){
   try {
     axios.post('http://localhost:8080/offers/purchase', offer, {
@@ -87,6 +89,7 @@ async function buyOffer(offer: OfferData){
   } catch (error) {
     console.error('Error fetching user data:', error)
   }
+  window.location.reload();
 }
 
 async function fetchUserData() {
